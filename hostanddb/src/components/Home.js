@@ -5,6 +5,8 @@ export default function Home() {
 
 
 const [user, setUser] = useState('')
+const [password, setPassword] = useState('')
+const [email, setEmail] = useState('')
 
 let submit = async (e) =>{
     e.preventDefault()
@@ -15,7 +17,18 @@ let submit = async (e) =>{
 
         await axios.post("http://localhost:8000/", {
             user
+            
         })
+        await axios.post("http://localhost:8000/", {
+            password
+            
+        })
+        await axios.post("http://localhost:8000/", {
+            email
+            
+        })
+
+
     }
     catch(e){
         console.log(e);
@@ -29,7 +42,10 @@ return (
     <form action="POST">
 
     
-        <textarea name = "text" onChange={(e)=>{setUser(e.target.value)}} placeholder = "enter text here" cols="30" rows="10"></textarea>
+        <textarea name = "text" onChange={(e)=>{setUser(e.target.value)}} placeholder = "User" cols="30" rows="10"></textarea>
+        <textarea name = "text" onChange={(e)=>{setPassword(e.target.value)}} placeholder = "Pass" cols="30" rows="10"></textarea>
+        <textarea name = "text" onChange={(e)=>{setEmail(e.target.value)}} placeholder = "Email" cols="30" rows="10"></textarea>
+        
         <input type = "submit" onClick={submit} value = "Submit"/>
 
     </form>

@@ -12,9 +12,13 @@ app.use(cors())
 
 app.post("/",async(req,res) => {
     const {user}=req.body
+    const {password} = req.body
+    const {email} = req.body
     
-    const data={
-        user:user
+    let data={
+        user:user,
+        password:password,
+        email:email
     }
 
     await collection.insertMany([data])
